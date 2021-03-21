@@ -41,12 +41,25 @@ namespace RestAPIDB.Services
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            var kitchenItem = _context.Set<T>().FirstOrDefault(i => i.Id == id);
+
+            if (kitchenItem == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            return kitchenItem;
         }
 
         public void Update(int id, T t)
         {
-            throw new NotImplementedException();
+            var kitchenItemToReplace = _context.Set<T>().FirstOrDefault(i => i.Id == id);
+
+            if (kitchenItemToReplace == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            kitchenItemToReplace.Id = t.Id;
         }
     }
 }
