@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RestAPIDB.Models
 {
-    public class Fruit : Item
+    public class Fruit : KitchenItem
     {
       
     }

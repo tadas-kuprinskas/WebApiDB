@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestAPIDB.Services
 {
-    public class KitchenItemService<T> : IKitchenItemService<T> where T : Item
+    public class KitchenItemService<T> : IKitchenItemService<T> where T : KitchenItem
     {
         private readonly DataContext _context;
 
@@ -19,7 +19,7 @@ namespace RestAPIDB.Services
 
         public void Create(T t)
         {
-            _context.Set<T>().Add(t);
+            _context.Set<T>().Add(t);  //Returns a DbSet<TEntity> instance
             _context.SaveChanges();
         }
 

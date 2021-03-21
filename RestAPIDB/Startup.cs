@@ -9,6 +9,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RestAPIDB.Data;
+using RestAPIDB.Interfaces;
+using RestAPIDB.Models;
+using RestAPIDB.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +34,9 @@ namespace RestAPIDB
             var defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnectionString));
+            services.AddScoped<IKitchenItemService<Tableware>, KitchenItemService<Tableware>>();
+            services.AddScoped<IKitchenItemService<Fruit>, KitchenItemService<Fruit>>();
+            services.AddScoped<IKitchenItemService<Vegetable>, KitchenItemService<Vegetable>>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

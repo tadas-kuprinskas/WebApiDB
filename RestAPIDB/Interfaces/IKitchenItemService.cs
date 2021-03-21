@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestAPIDB.Interfaces
 {
-    public interface IKitchenItemService<T> where T: Item
+    public interface IKitchenItemService<T> where T: KitchenItem
     {
         List<T> GetAll();
         T GetById(int id);
