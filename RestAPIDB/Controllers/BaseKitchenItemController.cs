@@ -13,41 +13,41 @@ namespace RestAPIDB.Controllers
     [Route("[controller]")]
     public class BaseKitchenItemController<T> : ControllerBase where T : KitchenItem
     {
-        private readonly IKitchenItemService<T> _kitchenItemService;
+        private readonly IKitchenItemRepository<T> _kitchenItemRepository;
 
-        public BaseKitchenItemController(IKitchenItemService<T> kitchenItemService)
+        public BaseKitchenItemController(IKitchenItemRepository<T> kitchenItemRepository)
         {
-            _kitchenItemService = kitchenItemService;
+            _kitchenItemRepository = kitchenItemRepository;
         }
 
         [HttpPost]
         public void Create(T t)
         {
-            _kitchenItemService.Create(t);
+            _kitchenItemRepository.Create(t);
         }
 
         [HttpDelete("{id}")]
         public void DeleteById(int id)
         {
-            _kitchenItemService.DeleteById(id);
+            _kitchenItemRepository.DeleteById(id);
         }
 
         [HttpGet]
-        public List<T> GetAll()
+        public Task<List<T>> GetAll()
         {
-            return _kitchenItemService.GetAll();
+            return _kitchenItemRepository.GetAll();
         }
 
         [HttpGet("{id}")]
-        public T GetById(int id)
+        public Task<T> GetById(int id)
         {
-            return _kitchenItemService.GetById(id);
+            return _kitchenItemRepository.GetById(id);
         }
 
         [HttpPut]
         public void Update(int id, T t)
         {
-            _kitchenItemService.Update(id, t);
+            _kitchenItemRepository.Update(id, t);
         }
     }
 }

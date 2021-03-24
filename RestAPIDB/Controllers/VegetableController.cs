@@ -13,7 +13,7 @@ namespace RestAPIDB.Controllers
     [Route("[controller]")]
     public class VegetableController : BaseKitchenItemController<Vegetable>
     {
-        public VegetableController(IKitchenItemService<Vegetable> context) : base(context)
+        public VegetableController(IKitchenItemRepository<Vegetable> context) : base(context)
         {
         }
     }

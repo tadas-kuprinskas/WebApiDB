@@ -14,7 +14,7 @@ namespace RestAPIDB.Controllers
     [Route("[controller]")]
     public class FruitController : BaseKitchenItemController<Fruit>
     {
-        public FruitController(IKitchenItemService<Fruit> context) : base(context)
+        public FruitController(IKitchenItemRepository<Fruit> kitchenItemService) : base(kitchenItemService)
         {
         }
     }

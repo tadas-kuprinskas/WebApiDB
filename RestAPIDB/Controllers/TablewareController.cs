@@ -13,7 +13,7 @@ namespace RestAPIDB.Controllers
     [Route("[controller]")]
     public class TablewareController : BaseKitchenItemController<Tableware>
     {
-        public TablewareController(IKitchenItemService<Tableware> context) : base(context)
+        public TablewareController(IKitchenItemRepository<Tableware> context) : base(context)
         {
         }
     }
